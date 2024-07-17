@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="xfTool:jar">
+    <output-path>$PROJECT_DIR$/../MyProject</output-path>
+    <root id="archive" name="xfTool.jar">
+      <element id="module-output" name="xfTool" />
+    </root>
+  </artifact>
+</component>
