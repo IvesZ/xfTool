@@ -30,6 +30,7 @@ public class Main {
 
         String savePath = ".\\outputs\\";
 
+        //macOS 路径
 //        String filePath1 = "./inputs/当日新增.txt";
 //        String filePath2 = "./inputs/一创固收.txt";
 //        String filePath3 = "./inputs/昨日新增.txt";
@@ -44,7 +45,8 @@ public class Main {
         HashMap<String, List<String>> ycMap;
         HashMap<String, String> config;
 
-        List<String> info = new ArrayList<>();
+//        List<String> info = new ArrayList<>();
+        HashMap<String, String> info = new HashMap<>();
 
         try{
             System.out.println("正在读取："+filePath4);
@@ -78,33 +80,38 @@ public class Main {
             String time = xzList.get(0);
             StringBuffer sb = new StringBuffer();
 
-            System.out.println("正在匹配SCP数据");
-            sb.append(time);sb.append("\n");
-//            System.out.println("info size"+info.size());
-            sb.append(info.get(0));sb.append("\n");
-            for (List<String> stringList : scpList) {
-                stringList.set(7,"(剩余 Y");
-                stringList.set(8,"估值)");
-                sb.append(String.join("，",stringList));
-                sb.append("\n");
+            if(info.containsKey(SCP)){
+                System.out.println("正在匹配SCP数据");
+                sb.append(time);sb.append("\n");
+                sb.append(info.get(SCP));sb.append("\n");
+                for (List<String> stringList : scpList) {
+                    stringList.set(7,"(剩余 Y");
+                    stringList.set(8,"估值)");
+                    sb.append(String.join("，",stringList));
+                    sb.append("\n");
+                }
             }
 
-            System.out.println("正在匹配CP数据");
-            sb.append("\n");
-            sb.append(time);sb.append("\n");
-            sb.append(info.get(1));sb.append("\n");
-            for (List<String> strings : cpList) {
-                Utils.addStr(sb, strings, ycMap);
+            if(info.containsKey(CP)){
+                System.out.println("正在匹配CP数据");
                 sb.append("\n");
+                sb.append(time);sb.append("\n");
+                sb.append(info.get(CP));sb.append("\n");
+                for (List<String> strings : cpList) {
+                    Utils.addStr(sb, strings, ycMap);
+                    sb.append("\n");
+                }
             }
 
-            System.out.println("正在匹配MTN数据");
-            sb.append("\n");
-            sb.append(time);sb.append("\n");
-            sb.append(info.get(2));sb.append("\n");
-            for (List<String> strings : mtnList) {
-                Utils.addStr(sb, strings, ycMap);
+            if(info.containsKey(MTN)){
+                System.out.println("正在匹配MTN数据");
                 sb.append("\n");
+                sb.append(time);sb.append("\n");
+                sb.append(info.get(MTN));sb.append("\n");
+                for (List<String> strings : mtnList) {
+                    Utils.addStr(sb, strings, ycMap);
+                    sb.append("\n");
+                }
             }
 
             if(config.containsKey("date")){

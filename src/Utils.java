@@ -9,14 +9,15 @@ import java.util.*;
  * @description
  */
 public class Utils {
-    public static List<List<String>> getSubList(String key, List<String> contents, List<String> info){
+    public static List<List<String>> getSubList(String key, List<String> contents, HashMap<String, String> info){
         int index1=-1, index2=-1;
         List<List<String>> list = new ArrayList<>();
 
         for(int i=0;i<contents.size();i++){
             String temp = contents.get(i).split("】")[0].replace("【","");
             if(temp.equals(key)){
-                info.add(contents.get(i));
+                info.put(key, contents.get(i));
+//                info.add(contents.get(i));
                 index1=i;
                 index2 = index1 + Integer.parseInt(
                          contents.get(i).split("，")[0]
@@ -70,22 +71,19 @@ public class Utils {
                     inputs.get(i).lastIndexOf("】")+2
             );
 
-//            String[] tempStr = ss.replaceAll("\\s|\\(|\\)|\\*","")
-//                    .split(",");
-
             String[] tempStr = ss.replace(" ","").split(",");
-
+            if(tempStr.length!=3){
+                System.out.println("一创固收数据异常："+inputs.get(i));
+            }
             String key = tempStr[0];
             List<String> contents = new ArrayList<>();
             int index = tempStr.length-1;
-//            System.out.println(index);
             contents.add(tempStr[index-2].substring(1));
             contents.add(tempStr[index-1]);
             contents.add(tempStr[index].replace(")",""));
 
             retMap.put(key,contents);
         }
-//        System.out.println("读取"+retMap.size()+"条");
         return retMap;
     }
 
