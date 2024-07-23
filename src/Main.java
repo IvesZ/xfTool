@@ -23,20 +23,20 @@ public class Main {
         System.out.println("获取当前目录");
         System.out.println(System.getProperty("user.dir"));
 
-        String filePath1 = ".\\inputs\\当日新增.txt";
-        String filePath2 = ".\\inputs\\一创固收.txt";
-        String filePath3 = ".\\inputs\\昨日新增.txt";
-        String filePath4 = ".\\inputs\\config.txt";
-
-        String savePath = ".\\outputs\\";
+//        String filePath1 = ".\\inputs\\当日新增.txt";
+//        String filePath2 = ".\\inputs\\一创固收.txt";
+//        String filePath3 = ".\\inputs\\昨日新增.txt";
+//        String filePath4 = ".\\inputs\\config.txt";
+//
+//        String savePath = ".\\outputs\\";
 
         //macOS 路径
-//        String filePath1 = "./inputs/当日新增.txt";
-//        String filePath2 = "./inputs/一创固收.txt";
-//        String filePath3 = "./inputs/昨日新增.txt";
-//        String filePath4 = "./inputs/config.txt";
-//
-//        String savePath = "./outputs/";
+        String filePath1 = "./inputs/当日新增.txt";
+        String filePath2 = "./inputs/一创固收.txt";
+        String filePath3 = "./inputs/昨日新增.txt";
+        String filePath4 = "./inputs/config.txt";
+
+        String savePath = "./outputs/";
 
 
         List<List<String>> scpList;
