@@ -71,13 +71,15 @@ public class Utils {
                     inputs.get(i).lastIndexOf("】")+2
             );
 
+
             String[] tempStr = ss.replace(" ","").split(",");
-            if(tempStr.length!=3){
+            int index = tempStr.length-1;
+            if(!tempStr[index].contains("%") || !(tempStr[index-1].contains("D") || tempStr[index-1].contains("Y"))){
                 System.out.println("一创固收数据异常："+inputs.get(i));
             }
             String key = tempStr[0];
             List<String> contents = new ArrayList<>();
-            int index = tempStr.length-1;
+
             contents.add(tempStr[index-2].substring(1));
             contents.add(tempStr[index-1]);
             contents.add(tempStr[index].replace(")",""));
